@@ -58,3 +58,15 @@ if not self.buffer.is_empty():
 ``` 
 
 Keep in mind `self.pert()` adds the STAR gradient by calling `loss.backwards()` on the KL loss function based on the perturbed parameters. This way, the gradients for STAR are added when `opt.step()` is called. Check `utils/star_perturber.py` for more details.
+
+# Cite our work
+```
+@inproceedings{
+eskandar2025star,
+title={{STAR}: Stability-Inducing Weight Perturbation for Continual Learning},
+author={Masih Eskandar and Tooba Imtiaz and Davin Hill and Zifeng Wang and Jennifer Dy},
+booktitle={The Thirteenth International Conference on Learning Representations},
+year={2025},
+url={https://openreview.net/forum?id=6N5OM5Duuj}
+}
+```
