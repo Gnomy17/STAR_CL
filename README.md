@@ -2,8 +2,19 @@
 
 Official Repository of [STAR: Stability Inducing Weight Perturbation for Continual Learning (ICLR 2025)](https://openreview.net/forum?id=6N5OM5Duuj)
 
-This library was built upon [mammoth](https://github.com/aimagelab/mammoth/tree/master/datasets).
+## Presentation
 
+### Poster
+
+![30891](https://github.com/user-attachments/assets/f2f8063d-5a54-41e5-8465-19eb795ded77)
+
+### Video
+
+https://github.com/user-attachments/assets/68fa1afb-ffb1-414c-85d3-9718796faffa
+
+
+
+This library was built upon [mammoth](https://github.com/aimagelab/mammoth/tree/master/datasets).
 
 The main part of our codes is in `model/utils/star_perturber.py`. Instructions on adding it to any model in mammoth are at the end of this document.
 
