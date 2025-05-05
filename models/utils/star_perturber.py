@@ -3,7 +3,7 @@
 import torch
 import torch.nn.functional as F
 from collections import OrderedDict
-
+from backbone import get_backbone
 
 
 def add_perturb_args(parser):
@@ -52,7 +52,7 @@ class Perturber():
         self.device = continual_model.device
         self.args = continual_model.args
         self.net = continual_model.net
-        self.proxy = continual_model.dataset.get_backbone().to(self.device)
+        self.proxy = get_backbone(self.args).to(self.device)
         self.steps = self.args.p_steps
         self.lam = self.args.p_lam
         self.gamma = self.args.p_gamma
