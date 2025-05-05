@@ -92,7 +92,7 @@ def parse_args():
         else:
             best = best[-1]
 
-        parser = get_model_class(args).get_parser()
+        parser = get_model_class(args).get_parser(parser)
         add_management_args(parser)
         add_experiment_args(parser)
         to_parse = sys.argv[1:] + ['--' + k + '=' + str(v) for k, v in best.items()]
@@ -101,7 +101,7 @@ def parse_args():
         if args.model == 'joint' and args.dataset == 'mnist-360':
             args.model = 'joint_gcl'
     else:
-        parser = get_model_class(args).get_parser()
+        parser = get_model_class(args).get_parser(parser)
         add_management_args(parser)
         add_experiment_args(parser)
         args = parser.parse_args()
