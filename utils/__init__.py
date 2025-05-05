@@ -32,6 +32,17 @@ def none_or_float(value):
         return None
     return float(value)
 
+def register_dynamic_module_fn(name: str, register: dict, tp: Type[T]):
+    """
+    Register a dynamic module in the specified dictionary.
+
+    Args:
+        name: the name of the module
+        register: the dictionary where the module will be registered
+        cls: the class to be registered
+        tp: the type of the class, used to dynamically infer the arguments
+    """
+    name = name.replace('_', '-').lower()
 
 def random_id(length=8, alphabet=string.ascii_letters + string.digits):
     """
