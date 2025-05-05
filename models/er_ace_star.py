@@ -16,16 +16,14 @@ class ErACESTAR(ContinualModel):
     COMPATIBILITY = ['class-il', 'task-il']
 
     @staticmethod
-    def get_parser() -> ArgumentParser:
-        parser = ArgumentParser(description='Continual learning via'
-                                ' Experience Replay with asymmetric cross-entropy.')
+    def get_parser(parser) -> ArgumentParser:
         # add arguments for STAR
         add_perturb_args(parser)
         add_rehearsal_args(parser)
         return parser
 
-    def __init__(self, backbone, loss, args, transform):
-        super().__init__(backbone, loss, args, transform)
+    def __init__(self, backbone, loss, args, transform, dataset=None):
+        super().__init__(backbone, loss, args, transform, dataset)
         self.buffer = Buffer(self.args.buffer_size)
         self.pert = Perturber(self)
         self.seen_so_far = torch.tensor([]).long().to(self.device)
