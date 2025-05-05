@@ -132,7 +132,7 @@ class ContinualModel(nn.Module):
         self._cpt = value
 
     def __init__(self, backbone: nn.Module, loss: nn.Module,
-                 args: Namespace, transform: nn.Module) -> None:
+                 args: Namespace, transform: nn.Module, dataset: 'ContinualDataset' = None) -> None:
         super(ContinualModel, self).__init__()
         print("Using {} as backbone".format(backbone.__class__.__name__))
         self.net = backbone
@@ -140,7 +140,11 @@ class ContinualModel(nn.Module):
         self.args = args
         self.original_transform = transform
         self.transform = transform
-        self.dataset = get_dataset(self.args)
+        if dataset is None:
+            logging.error("No dataset provided. Will create another instance but NOTE that this **WILL** result in some bugs and possible memory leaks!")
+            self.dataset = get_dataset(self.args)
+        else:
+            self.dataset = dataset
         self.N_CLASSES = self.dataset.N_CLASSES
         self.num_classes = self.N_CLASSES
         self.N_TASKS = self.dataset.N_TASKS
