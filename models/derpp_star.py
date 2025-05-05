@@ -18,15 +18,13 @@ class DerppSTAR(ContinualModel):
     NAME = 'derpp_star'
     COMPATIBILITY = ['class-il', 'domain-il', 'task-il', 'general-continual']
 
-    def __init__(self, backbone, loss, args, transform):
-        super(DerppSTAR, self).__init__(backbone, loss, args, transform)
+    def __init__(self, backbone, loss, args, transform, dataset=None):
+        super(DerppSTAR, self).__init__(backbone, loss, args, transform, dataset)
         self.pert = Perturber(self)
         self.buffer = Buffer(self.args.buffer_size, self.device)
 
     @staticmethod
-    def get_parser() -> ArgumentParser:
-        parser = ArgumentParser(description='Continual learning via'
-                                        ' Dark Experience Replay++.')
+    def get_parser(parser) -> ArgumentParser:
         add_rehearsal_args(parser)
         # add arguments for STAR
         add_perturb_args(parser)
