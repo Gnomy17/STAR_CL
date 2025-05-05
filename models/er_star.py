@@ -25,24 +25,23 @@ class ErSTAR(ContinualModel):
     COMPATIBILITY = ['class-il', 'domain-il', 'task-il', 'general-continual']
 
     @staticmethod
-    def get_parser() -> ArgumentParser:
+    def get_parser(parser) -> ArgumentParser:
         """
         Returns an ArgumentParser object with predefined arguments for the Er model.
 
         Besides the required `add_management_args` and `add_experiment_args`, this model requires the `add_rehearsal_args` to include the buffer-related arguments.
         """
-        parser = ArgumentParser(description='Continual learning via Experience Replay.')
         add_rehearsal_args(parser)
         # add arguments for STAR
         add_perturb_args(parser)
         return parser
     
 
-    def __init__(self, backbone, loss, args, transform):
+    def __init__(self, backbone, loss, args, transform, dataset=None):
         """
         The ER model maintains a buffer of previously seen examples and uses them to augment the current batch during training.
         """
-        super(ErSTAR, self).__init__(backbone, loss, args, transform)
+        super(ErSTAR, self).__init__(backbone, loss, args, transform, dataset)
         self.buffer = Buffer(self.args.buffer_size)
         self.pert = Perturber(self) 
     def observe(self, inputs, labels, not_aug_inputs, epoch=None):
