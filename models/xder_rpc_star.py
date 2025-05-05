@@ -60,10 +60,7 @@ class XDerRPCSTAR(ContinualModel):
     COMPATIBILITY = ['class-il', 'task-il']
 
     @staticmethod
-    def get_parser() -> ArgumentParser:
-        parser = ArgumentParser(description='Continual learning via'
-                                ' eXtended Dark Experience Replay with RPC.')
-
+    def get_parser(parser) -> ArgumentParser:
         add_rehearsal_args(parser)
         parser.add_argument('--alpha', type=float, required=True, help='Penalty weight.')
         parser.add_argument('--beta', type=float, required=True, help='Penalty weight.')
@@ -78,8 +75,8 @@ class XDerRPCSTAR(ContinualModel):
         parser.add_argument('--n_rpc_heads', type=int, help='N Heads for RPC')
         return parser
 
-    def __init__(self, backbone, loss, args, transform):
-        super().__init__(backbone, loss, args, transform)
+    def __init__(self, backbone, loss, args, transform, dataset=None):
+        super().__init__(backbone, loss, args, transform, dataset)
         self.buffer = Buffer(self.args.buffer_size)
         self.update_counter = torch.zeros(self.args.buffer_size).to(self.device)
         n_rpc_heads = self.args.n_rpc_heads if self.args.n_rpc_heads is not None else self.num_classes
