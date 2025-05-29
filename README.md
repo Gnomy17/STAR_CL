@@ -1,6 +1,9 @@
-# STAR: Stability Inducing Weight Perturbation for Continual Learning
+# :star2: STAR: Stability Inducing Weight Perturbation for Continual Learning
 
 Official Repository of [STAR: Stability Inducing Weight Perturbation for Continual Learning (ICLR 2025)](https://openreview.net/forum?id=6N5OM5Duuj)
+
+### :dizzy: **STAR is now an official part of the [mammoth](https://github.com/aimagelab/mammoth/tree/master/datasets) library.** :dizzy:
+You can either use this repository, or the official [mammoth](https://github.com/aimagelab/mammoth/tree/master/datasets) library to use STAR. The instructions below for _adding STAR to your own code_ and the arguments for running the experiments should work in both repositories!
 
 ## Presentation
 
