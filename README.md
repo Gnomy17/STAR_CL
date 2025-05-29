@@ -24,7 +24,7 @@ You can use the following commands to run each experiment with the best argument
 
 ```
 ##### DER++ + STAR
-python utils/main.py --alpha=0.2 --beta=0.1 --buffer_size=100 --dataset=seq-cifar10 --lr=0.1 --model=derpp_s --p-gamma=0.1 --p-lam=0.005
+python utils/main.py --alpha=0.2 --beta=0.1 --buffer_size=100 --dataset=seq-cifar10 --lr=0.1 --model=derpp_star --p-gamma=0.1 --p-lam=0.005
 
 ##### ER-ACE + STAR
 python utils/main.py --buffer_size=100 --dataset=seq-cifar10 --lr=0.03 --model=er_ace_star --p-gamma=0.01 --p-lam=0.1

@@ -7,3 +7,5 @@ wandb
 onedrivedownloader
 av
 tqdm
+kornia
+timm
